@@ -1,58 +1,18 @@
-<!-- FILEPATH: /index.html -->
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Spots</title>
+    <!-- Styling -->
     <link href="https://unpkg.com/base-css-theme@1.1.3/base.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
 <body>
-    <div class="container">
-        <h1>List of Spots</h1>
-        <ul id="spots-list"></ul>
-    </div>
-
+    <!-- Styling -->
     <script src="https://unpkg.com/base-css-theme@1.1.3/base.js"></script>
-    <script>
-        // Get the spots folder path
-        const spotsFolderPath = "./spots/";
-
-        // Get the spots list element
-        const spotsList = document.getElementById("spots-list");
-
-        // Iterate over all the files in the spots folder
-        fetch(spotsFolderPath)
-            .then(response => response.text())
-            .then(data => {
-                // Parse the HTML response to get all the file names
-                const parser = new DOMParser();
-                const htmlDoc = parser.parseFromString(data, "text/html");
-                const fileLinks = htmlDoc.querySelectorAll("a[href$='.html']");
-
-                // Create a list item for each file and add it to the spots list
-                const fileNames = [];
-                fileLinks.forEach(link => {
-                    const fileName = link.getAttribute("href");
-                    if (fileName !== "../" && fileName !== "index.html") {
-                        const spotNumber = fileName.match(/spot(\d+)\.html/)[1];
-                        fileNames.push({ fileName, spotNumber });
-                    }
-                });
-                fileNames.sort((a, b) => a.spotNumber - b.spotNumber);
-                fileNames.forEach(({ fileName, spotNumber }) => {
-                    const listItem = document.createElement("li");
-                    const fileLink = document.createElement("a");
-                    fileLink.href = fileName;
-                    fileLink.textContent = `Spot ${spotNumber}`;
-                    listItem.appendChild(fileLink);
-                    spotsList.appendChild(listItem);
-                });
-            })
-            .catch(error => console.error(error));
-    </script>
+    <!-- List of Spots -->
+    <script src="scripts/spots.js"></script>
 </body>
 
 </html>
