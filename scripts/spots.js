@@ -1,12 +1,10 @@
-// put all the HTML for the spots page in the div with class "container"
-const container = document.createElement('div')
-container.className = 'container'
-document.body.appendChild(container)
+// get parent container div from which the script is called
+const parent = document.currentScript.parentElement
 
 // HTML for header with title "List of Spots"
-const header = document.createElement('h1')
+const header = document.createElement('h3')
 header.innerText = 'List of Spots'
-container.appendChild(header)
+parent.appendChild(header)
 
 // define list of spots
 const spot_list = [1, 9, 11, 15, 17, 21, 22, 30, 31, 32, 36, 39, 43, 44, 47,
@@ -20,5 +18,5 @@ spot_list.forEach(function (spot) {
     a.href = `spots/spot${spot}.html`
     a.innerText = `Spot ${spot}`
     li.appendChild(a)
-    container.appendChild(li)
+    parent.appendChild(li)
 })
