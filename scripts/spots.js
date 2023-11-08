@@ -1,11 +1,6 @@
 // get parent container div from which the script is called
 const parent = document.currentScript.parentElement
 
-// HTML for header with title "List of Spots"
-const header = document.createElement('h3')
-header.innerText = 'List of Spots'
-parent.appendChild(header)
-
 // define list of spots
 const spot_list = [1, 9, 11, 15, 17, 21, 22, 30, 31, 32, 36, 39, 43, 44, 47,
     51, 53, 54, 63, 66, 68, 79, 89, 92, 94, 103]
